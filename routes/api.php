@@ -29,3 +29,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //});
 
 Route::apiResource('country', 'Country\CountryController')->middleware('client');
+
+Route::post('register', 'API\RegisterController@register');
+
+Route::post('login', 'API\RegisterController@login');
+
+Route::middleware('auth:api')->group( function(){
+    Route::resource('products', 'API\ProductController');
+});
